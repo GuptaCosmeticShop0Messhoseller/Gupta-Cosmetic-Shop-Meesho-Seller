@@ -1,11 +1,10 @@
 // ===== Admin Login =====
 
 // Apna email aur password yahan badal dena
-const ADMIN_EMAIL = "youradmin@gmail.com";
-const ADMIN_PASSWORD = "12345678";
 
 function adminLogin() {
-
+const ADMIN_EMAIL = "anshraj33668@gmail.com";
+const ADMIN_PASSWORD = "Ansh@2006";
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
