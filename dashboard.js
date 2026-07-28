@@ -24,7 +24,7 @@ function addProduct() {
     return;
   }
 
-  alert("Product Ready: " + product.name);
+window.saveProduct(product);
 
 }
 function logout() {
