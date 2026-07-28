@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getDatabase, ref, push, set, get } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAKZKrCxiIzthZKkXrkAY46mTZNJDw4CJ0",
   authDomain: "gupta-cosmetic-shop-and-messho.firebaseapp.com",
@@ -13,25 +14,25 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-window.saveOrderToFirebase = async function(order) {
-  try {
-    await push(ref(db, "orders"), {
-      ...order,
-      status: "Pending",
-      createdAt: new Date().toISOString()
-    });
-    alert("✅ Order Saved Successfully");
-  } catch (error) {
-    alert("❌ " + error.message);
-  }
-};
+const container = document.getElementById("productContainer");
 
-window.saveProduct = async function(product){
+async function loadProducts() {
+  const snapshot = await get(ref(db, "products"));
 
-  const productRef = push(ref(db,"products"));
+  if (!snapshot.exists()) return;
 
-  await set(productRef,product);
+  snapshot.forEach((item) => {
+    const p = item.val();
 
-  alert("✅ Product Added");
-
+    container.innerHTML += `
+      <div class="product-card">
+        <img src="${p.image}" style="width:180px">
+        <h3>${p.name}</h3>
+        <p>₹${p.price}</p>
+        <p><del>₹${p.mrp}</del></p>
+      </div>
+    `;
+  });
 }
+
+loadProducts();
