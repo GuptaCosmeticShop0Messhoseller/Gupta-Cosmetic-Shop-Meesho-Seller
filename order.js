@@ -21,16 +21,5 @@ function sendOrder() {
   // Firebase me save karega
   saveOrderToFirebase(order);
 
-  // WhatsApp message
-  const msg =
-    `Name: ${order.name}%0A` +
-    `Phone: ${order.phone}%0A` +
-    `Address: ${order.address}%0A` +
-    `Product: ${order.product}%0A` +
-    `Quantity: ${order.quantity}`;
-
-  window.open(
-    "https://wa.me/917654176410?text=" + msg,
-    "_blank"
-  );
+  alert("✅ Order Placed Successfully");
 }
