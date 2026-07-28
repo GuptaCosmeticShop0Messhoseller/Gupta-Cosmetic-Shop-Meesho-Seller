@@ -15,7 +15,8 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const container = document.getElementById("productContainer");
-
+console.log("products.js loaded");
+console.log(container);
 get(ref(db, "products")).then((snapshot) => {
   if (snapshot.exists()) {
     snapshot.forEach((item) => {
