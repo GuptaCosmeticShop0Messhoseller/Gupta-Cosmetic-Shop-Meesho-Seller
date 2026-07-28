@@ -1,5 +1,5 @@
 function sendOrder() {
-
+alert("Button Clicked");
   const order = {
     name: document.getElementById("name").value,
     phone: document.getElementById("phone").value,
