@@ -37,3 +37,35 @@ window.saveProduct = async function(product) {
     alert(e.message);
   }
 };
+window.loadProducts = async function () {
+
+  const container = document.getElementById("productContainer");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const snapshot = await get(ref(db, "products"));
+
+  if (!snapshot.exists()) {
+    container.innerHTML = "<h3>No Products Found</h3>";
+    return;
+  }
+
+  snapshot.forEach((item) => {
+
+    const product = item.val();
+
+    container.innerHTML += `
+      <div class="product-card">
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>₹${product.price}</p>
+        <p><del>₹${product.mrp}</del></p>
+        <button class="shop-btn">Buy Now</button>
+      </div>
+    `;
+
+  });
+
+}
