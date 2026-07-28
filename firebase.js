@@ -26,3 +26,19 @@ window.saveOrderToFirebase = async function(order) {
     alert("❌ " + error.message);
   }
 };
+import {
+  get,
+  set,
+  push,
+  ref
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+window.saveProduct = async function(product){
+
+  const productRef = push(ref(db,"products"));
+
+  await set(productRef,product);
+
+  alert("✅ Product Added");
+
+}
