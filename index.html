@@ -107,5 +107,12 @@ Place Order
   
 </footer>
 <script src="order.js"></script>
+  <script>
+window.onload = function () {
+  if (typeof loadProducts === "function") {
+    loadProducts();
+  }
+};
+  </script>
 </body>
 </html>
