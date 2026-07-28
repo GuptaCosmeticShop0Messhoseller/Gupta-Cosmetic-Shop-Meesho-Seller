@@ -19,7 +19,8 @@ alert("Button Clicked");
   }
 
   // Firebase me save karega
+  alert("Before Firebase");
   saveOrderToFirebase(order);
-
+alert("After Firebase");
   alert("✅ Order Placed Successfully");
 }
