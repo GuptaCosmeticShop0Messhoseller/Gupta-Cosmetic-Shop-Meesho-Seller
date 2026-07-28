@@ -33,7 +33,6 @@ window.saveProduct = async function(product) {
     const productRef = push(ref(db, "products"));
     await set(productRef, product);
 
-    alert("✅ Product Added");
   } catch (e) {
     alert(e.message);
   }
